@@ -12,11 +12,6 @@ output "ecs_service_name" {
   value       = aws_ecs_service.my_first_service.name
 }
 
-output "container_image" {
-  description = "Name of the Container Image"
-  value       = aws_ecr_repository.my_ecr_repo.repository_url
-}
-
 output "aws_alb" {
   description = "Name of the alb"
   value       = aws_alb.application_load_balancer.name
