@@ -84,7 +84,7 @@ resource "aws_security_group" "service_security_group" {
     to_port   = 0
     protocol  = "-1"
     # Only allowing traffic in from the load balancer security group
-    security_groups = ["${aws_security_group.load_balancer_security_group.id}"]
+    security_groups = ["sg-089247704a345b3d5"]
   }
 
   egress {
@@ -100,7 +100,7 @@ resource "aws_alb" "application_load_balancer" {
   load_balancer_type = "application"
   subnets            = ["subnet-0cc572bac1f076425", "subnet-0df74f276d6832bed"]
   # Referencing the security group
-  security_groups = ["${aws_security_group.load_balancer_security_group.id}"]
+  security_groups = ["sg-089247704a345b3d5"]
 }
 
 resource "aws_lb_target_group" "target_group" {
@@ -125,6 +125,7 @@ resource "aws_lb_listener" "listener" {
   }
 }
 
+/*
 # Creating a security group for the load balancer:
 resource "aws_security_group" "load_balancer_security_group" {
 
@@ -134,7 +135,7 @@ resource "aws_security_group" "load_balancer_security_group" {
     from_port   = 80 # Allowing traffic in from port 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"] # Allowing traffic in from all sources
+    cidr_blocks = ["72.221.90.104/32"] # Allowing traffic in from all sources
   }
 
   egress {
@@ -144,3 +145,4 @@ resource "aws_security_group" "load_balancer_security_group" {
     cidr_blocks = ["0.0.0.0/0"] # Allowing traffic out to all IP addresses
   }
 }
+*/
